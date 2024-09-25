@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Quiz App</h1>
+
+    <!-- Welcome message -->
+    <div id="welcome-message"></div>
+
+    <!-- Quiz Section -->
+    <div id="quiz-section">
+      <h2 id="question">Loading question...</h2>
+      <input type="text" id="answer" placeholder="Your answer">
+      <button id="submit-btn">Submit Answer</button>
+    </div>
+
+    <!-- Feedback Message -->
+    <div id="feedback" class="hidden"></div>
+
+    <!-- Leaderboard -->
+    <div id="leaderboard">
+      <h2>Leaderboard</h2>
+      <ul id="leaderboard-list"></ul>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
