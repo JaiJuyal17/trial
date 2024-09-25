@@ -14,10 +14,23 @@ registerForm.addEventListener('submit', (e) => {
     errorMessage.textContent = 'Please enter a valid name.';
     errorMessage.classList.remove('hidden');
   } else {
-    // Save the username in localStorage
-    localStorage.setItem('currentUser', JSON.stringify({ name: username, points: 0, level: 1 }));
+    // Check if the username already exists
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+    let userExists = users.some(user => user.name === username);
 
-    // Redirect to the quiz page
-    window.location.href = 'index.html';
+    if (userExists) {
+      errorMessage.textContent = 'This name is already taken. Please choose another name.';
+      errorMessage.classList.remove('hidden');
+    } else {
+      // Add the new user to localStorage with initial points and level
+      users.push({ name: username, points: 0, level: 1 });
+      localStorage.setItem('users', JSON.stringify(users));
+
+      // Save the current session user in localStorage
+      localStorage.setItem('currentUser', username);
+
+      // Redirect to the quiz page
+      window.location.href = 'index.html';
+    }
   }
 });
